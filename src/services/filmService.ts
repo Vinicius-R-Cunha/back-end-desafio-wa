@@ -10,3 +10,12 @@ export async function update() {
 
   return;
 }
+
+export async function get(page: number) {
+  if (!page) {
+    return await filmRepository.getAll();
+  }
+
+  const skip = (page - 1) * 10;
+  return await filmRepository.get(skip);
+}
