@@ -42,7 +42,7 @@ DATABASE_URL=postgres://postgres:123456@localhost:5432/example
 ### Run prisma to create database
 
 ```bash
-npx prisma generate
+npx prisma migrate dev
 ```
 
 ### Run the back-end with
