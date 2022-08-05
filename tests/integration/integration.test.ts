@@ -34,6 +34,19 @@ describe("GET /films", () => {
     expect(films).toEqual(response.body);
   });
 
+  it("should return 200 and get all films given a page that is not a number", async () => {
+    const FILM_QUANTITY = 53;
+    await filmFactory.populateFilmsTable(FILM_QUANTITY);
+
+    const films = await prisma.films.findMany();
+
+    const response = await supertest(app).get("/films?page=random");
+
+    expect(response.status).toBe(200);
+    expect(films).toHaveLength(FILM_QUANTITY);
+    expect(films).toEqual(response.body);
+  });
+
   it("should return 200 and get first 10 films", async () => {
     const FILM_QUANTITY = 53;
     await filmFactory.populateFilmsTable(FILM_QUANTITY);
