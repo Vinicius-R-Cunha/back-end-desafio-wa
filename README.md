@@ -9,6 +9,7 @@ Method POST on this route updates database with new films information
 ### Route "/films"
 
 Method GET to get all films
+
 Query parameters: page - integer
 
 ## How to run
